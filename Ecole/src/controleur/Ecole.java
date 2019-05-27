@@ -6,6 +6,7 @@
 package controleur;
 import java.sql.SQLException;
 import modele.*;
+import vue.*;
 
 /**
  *
@@ -18,13 +19,20 @@ public class Ecole {
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
+    
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+       
         try {
+            //Connexion à la BDD
             connexion conn = new connexion();
             System.out.println(conn.remplirChampsRequete("select * from personne").get(0));
         }catch(ClassNotFoundException | SQLException e){
             System.err.println(e);
         }
+        
+        //Affichage de la page
+        affiche window = new affiche();
+        window.setVisible(true);
     }
     
 }
