@@ -5,10 +5,12 @@
  */
 package modele;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author marko
  */
 public class bulletin {
-    
+    private final ArrayList<detailbulletin> listedetail = new ArrayList();
 }

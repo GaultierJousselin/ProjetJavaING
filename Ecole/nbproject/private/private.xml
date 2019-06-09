@@ -3,24 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/anneescolaire.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/classe.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/vue/menu.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/inscription.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/vue/affiche.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/detailbulletin.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/controleur/FileFormatException.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/niveau.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/connexion.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/personne.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/listenermenu.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/controleur/Ecole.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/discipline.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/enseignement.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/bulletin.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/menuActionListener.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/trimestre.java</file>
-            <file>file:/C:/Users/marko/Documents/NetBeansProjects/Ecole/src/modele/evaluation.java</file>
+            <file>file:/D:/JAVA%20EXERCICES/Ecole/src/vue/AffichageNiveau.java</file>
+            <file>file:/D:/JAVA%20EXERCICES/Ecole/src/vue/MainMenuTest.java</file>
+            <file>file:/D:/JAVA%20EXERCICES/Ecole/src/controleur/Ecole.java</file>
+            <file>file:/D:/JAVA%20EXERCICES/Ecole/src/vue/Connexion.java</file>
+            <file>file:/D:/JAVA%20EXERCICES/Ecole/src/vue/AffichageEleve.java</file>
         </group>
     </open-files>
 </project-private>

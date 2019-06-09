@@ -57,7 +57,6 @@ public class connexion {
 
         // creation d'un ordre SQL (statement)
         stmt = conn.createStatement();
-        System.out.println("Connection Established");
     }
 
     /**
@@ -70,30 +69,6 @@ public class connexion {
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
-    
-    /*
-    public connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
-        // chargement driver "com.mysql.jdbc.Driver"
-        Class.forName("com.mysql.jdbc.Driver");
-
-        // Connexion via le tunnel SSH avec le username et le password ECE
-        SSHTunnel ssh = new SSHTunnel(usernameECE, passwordECE);
-
-        if (ssh.connect()) {
-            System.out.println("Connexion reussie");
-
-            // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3305/" + usernameECE;
-
-            //creation d'une connexion JDBC Ã  la base
-            conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
-
-            // crÃ©ation d'un ordre SQL (statement)
-            stmt = conn.createStatement();
-
-        }
-    }
-    */
     
     /**
      * Methode qui ajoute la table en parametre dans son ArrayList
@@ -123,7 +98,12 @@ public class connexion {
     public void ajouterRequeteMaj(String requete) {
         requetesMaj.add(requete);
     }
-
+    
+    //Executer une requete en paramètre
+    public void executerRequete(String req) throws SQLException {
+        // recuperation de l'ordre de la requete
+        executeUpdate(req);
+    }
     /**
      * Methode qui retourne l'ArrayList des champs de la table en parametre
      *
@@ -173,32 +153,63 @@ public class connexion {
         // rÃ©cupÃ©ration du resultat de l'ordre
         rsetMeta = rset.getMetaData();
 
-        // calcul du nombre de colonnes du resultat
+       // calcul du nombre de colonnes du resultat
         int nbColonne = rsetMeta.getColumnCount();
 
         // creation d'une ArrayList de String
-        ArrayList<String> liste;
-        liste = new ArrayList<String>();
+        ArrayList<String> liste = new ArrayList<>();
 
         // tant qu'il reste une ligne 
         while (rset.next()) {
             String champs;
-            champs = rset.getString(1); // ajouter premier champ
+            
+            for(int j = 0; j < nbColonne; j++) {
+                champs = rset.getString(j);
 
-            // Concatener les champs de la ligne separes par ,
-            for (int i = 1; i < nbColonne; i++) {
-                champs = champs + "," + rset.getString(i + 1);
+                // ajouter les champs de la ligne dans l'ArrayList
+                liste.add(champs);
             }
-
-            // ajouter un "\n" a la ligne des champs
-            champs = champs + "\n";
-
-            // ajouter les champs de la ligne dans l'ArrayList
-            liste.add(champs);
         }
 
         // Retourner l'ArrayList
         return liste;
+    }
+    
+    public ArrayList remplirChampsRequete(String requete, String[] champsvoulu) throws SQLException {
+        // rÃ©cupÃ©ration de l'ordre de la requete
+        rset = stmt.executeQuery(requete);
+
+        // rÃ©cupÃ©ration du resultat de l'ordre
+        rsetMeta = rset.getMetaData();
+
+        // creation d'une ArrayList de String
+        ArrayList<String> liste = new ArrayList<>();
+
+        // tant qu'il reste une ligne 
+        while (rset.next()) {
+            String champs;
+            
+            for(int j = 0; j < champsvoulu.length; j++) {
+                champs = rset.getString(champsvoulu[j]); // ajouter premier champ
+
+                // ajouter les champs de la ligne dans l'ArrayList
+                liste.add(champs);
+            }
+        }
+
+        // Retourner l'ArrayList
+        return liste;
+    }
+    
+    //Trouver un objet par l'id dans sa table
+    public ArrayList find(String table, int id, String[] champsvoulu) throws SQLException{
+        ArrayList<String> data = new ArrayList();
+        if(id == -1){
+            data.addAll(remplirChampsRequete("select * from "+ table, champsvoulu) );
+        }else{
+            data.addAll(remplirChampsRequete("select * from "+ table + " WHERE id = "+ id, champsvoulu) );
+        }
+        return data;
     }
 
     /**
